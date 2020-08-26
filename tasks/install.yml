@@ -8,23 +8,13 @@
 #   - `ansible_distribution_release` → precise, wheezy, ...
 #   - `ansible_pkg_mgr`              → apt, yum, ...
 
-- name: Update the packages list
-  become: yes
-  when: ansible_os_family == 'Debian'
-  apt:
-    update_cache: yes
-    cache_valid_time: 3600
-  tags:
-    - deps
-    - supervisor
-    - supervisord
-
 - name: Install Supervisord
   become: yes
   when: ansible_os_family == 'Debian'
   apt:
     name: supervisor
     state: present
+    update_cache: yes
   register: __supervisord_installed
   tags:
     - deps
