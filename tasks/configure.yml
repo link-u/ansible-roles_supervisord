@@ -51,7 +51,7 @@
   template:
     src: "{{item}}"
     dest: "{{supervisord_init_script}}"
-    mode: 0755
+    mode: "0755"
   with_first_found:
     - files:
         - "init.{{ansible_distribution}}-{{ansible_distribution_release}}"
