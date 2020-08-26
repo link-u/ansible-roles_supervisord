@@ -25,6 +25,7 @@
   apt:
     name: supervisor
     state: present
+  register: __supervisord_installed
   tags:
     - deps
     - supervisor

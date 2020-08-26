@@ -76,3 +76,9 @@
     - conf
     - supervisor
     - supervisord
+
+- name: Restart supervisord, when installed with this role
+  systemd:
+    name: "supervisor.service"
+    state: "restarted"
+  when: __supervisord_installed.changed | bool
